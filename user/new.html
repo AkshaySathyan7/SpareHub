@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Add your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f4f4f4; /* Fallback background color */
+        }
+        
+        .dashboard {
+            max-width: 800px;
+            margin: 50px auto; /* Increased margin for better positioning */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        
+        .header nav ul li a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        
+        .header nav ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        form input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        form input:focus {
+            border-color: #007BFF; /* Highlight border on focus */
+            outline: none; /* Remove default outline */
+        }
+        
+        form button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional styling for responsiveness */
+        @media (max-width: 600px) {
+            .dashboard {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            .header nav ul li {
+                display: block; /* Stack navigation links on small screens */
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1>User Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#edit-profile">Edit Profile</a></li>
+                    <li><a href="#change-password">Change Password</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section id="profile" class="section">
+                <h2>User Profile</h2>
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Email:</strong> johndoe@example.com</p>
+                <p><strong>Joined:</strong> January 1, 2021</p>
+            </section>
+            
+            <section id="edit-profile" class="section">
+                <h2>Edit Profile</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" value="John Doe" placeholder="Enter your name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="johndoe@example.com" placeholder="Enter your email" required>
+                    
+                    <button type="submit">Save Changes</button>
+                </form>
+            </section>
+            
+            <section id="change-password" class="section">
+                <h2>Change Password</h2>
+                <form>
+                    <label for="current-password">Current Password:</label>
+                    <input type="password" id="current-password" placeholder="Enter your current password" required>
+                    
+                    <label for="new-password">New Password:</label>
+                    <input type="password" id="new-password" placeholder="Enter a new password" required>
+                    
+                    <label for="confirm-password">Confirm New Password:</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm your new password" required>
+                    
+                    <button type="submit">Change Password</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

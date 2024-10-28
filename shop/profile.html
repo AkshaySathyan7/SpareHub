@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Customer Profile Dashboard</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color:skyblue; /* Light teal background */
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .dashboard {
+        max-width: 800px;
+        margin: auto;
+        background: #ffffff; /* White background for the dashboard */
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+        padding: 20px;
+    }
+    
+    .profile-card {
+        text-align: center;
+        padding: 20px;
+        background-color: #b2ebf2; /* Light cyan background for the profile card */
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #00838f; /* Border to enhance visibility */
+    }
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #00838f;
+    }
+    
+    .customer-name {
+        font-size: 24px;
+        margin: 10px 0;
+        color: #00796b; /* Darker teal for the name */
+    }
+    
+    .customer-id {
+        color: #555;
+    }
+    
+    .edit-btn {
+        background-color: #00838f;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .edit-btn1 {
+        background-color: #008f0c;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    .edit-btn:hover {
+        background-color: #005b5a;
+    }
+    
+    .section {
+        margin: 20px 0;
+        padding: 15px;
+        background: #f1f8e9; /* Light green background for sections */
+        border-radius: 8px;
+    }
+    
+    h3 {
+        border-bottom: 2px solid #00838f;
+        padding-bottom: 10px;
+        color: #00796b; /* Darker teal for section titles */
+    }
+    
+    .order-list, .wishlist {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .order-list li, .wishlist li {
+        background: #ffffff; /* White background for list items */
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background 0.3s;
+        border: 1px solid #cfd8dc; /* Light grey border */
+    }
+    
+    .order-list li:hover, .wishlist li:hover {
+        background: #b2ebf2; /* Light cyan on hover */
+    }
+    
+    .settings-btn {
+        background-color: #ffa726;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: background 0.3s;
+    }
+    
+    .settings-btn:hover {
+        background-color: #ff8c00;
+    }
+    
+</style>
+<body>
+    <div class="dashboard">
+        <div class="profile-card">
+            <img src="profile-pic.png" alt="Profile Picture" class="profile-pic">
+            <h2 class="customer-name"></h2>
+            <h2 class="customer-name"></h2>
+            <h2 class="customer-name"></h2>
+            <p class="customer-name"></p>
+            <p class="customer-name"></p>
+            <a href="edit-pass.html"><button class="edit-btn">Edit Profile</button></a>
+            <a href="change.html"><button class="edit-btn1">Change Password</button></a>
+        </div>
