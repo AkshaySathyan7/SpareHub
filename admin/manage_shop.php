@@ -224,10 +224,10 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Username</th>
-                    <th>Email</th>
                     <th>Address</th>
                     <th>Phone Number</th>
+                    <th>Shop ID</th>
+                    <th>Shop Name</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -244,7 +244,18 @@
 while($row=mysqli_fetch_array($result))
 {
 echo"<tr>";
-echo"<td>".$row['name']."</td>"."<td>".$row['username']."</td>"."<td>".$row['email']."</td>"."<td>".$row['address']."</td>"."<td>".$row['phno']."</td>"."<td>";?>
+echo"<td>".$row['name']."</td>"."<td>".$row['address']."</td>"."<td>".$row['phno']."</td>"."<td>";
+}
+
+$query1="select * from user_shop";
+                      $result1 = mysqli_query($con, $query1) or die("Couldn't connect to server: " . mysqli_error($con));
+while($row1=mysqli_fetch_array($result1))
+{
+    echo $row1['shop_id']."</td>"."<td>".$row1['shop_names']."</td>"."<td>";
+}
+while($row=mysqli_fetch_array($result))
+{
+    ?>
 <a href=".php?username=<?php echo $row['username'];?>">
 <button class="button" style="background-color: #28a745;">Approval</button>
 </a>
