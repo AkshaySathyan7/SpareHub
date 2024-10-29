@@ -157,14 +157,14 @@ background-color: #f1f1f1;
             <img src="assets/Spare Hub.png" width="50" height="50" alt="Spare Hub Logo">
             Admin
         </h3>
-        <a href="dashboard.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
-        <a href="manage_customer.html" class="fade-in"><i class="fas fa-users"></i> Manage Customers</a>
-        <a href="manage_shop.html" class="fade-in"><i class="fas fa-store"></i> Manage Shop</a>
-        <a href="manage_del.html" class="fade-in"><i class="fas fa-truck"></i> Manage Delivery Agents</a>
-        <a href="approve.html" class="fade-in"><i class="fas fa-users"></i> Approved Users</a>
-        <a href="verify_complaint.html" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
-        <a href="pending.html" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
-        <a href="admin.html" class="fade-in"><i class="fa-solid fa-user-tie"></i> New Admin</a>
+        <a href="./dashboard.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
+        <a href="manage_customer.php" class="fade-in"><i class="fas fa-users"></i> Manage Customers</a>
+        <a href="manage_shop.php" class="fade-in"><i class="fas fa-store"></i> Manage Shop</a>
+        <a href="manage_del.php" class="fade-in"><i class="fas fa-truck"></i> Manage Delivery Agents</a>
+        <a href="approve.php" class="fade-in"><i class="fas fa-users"></i></i> Approved users</a>
+        <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
+        <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
+        <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
         <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     
@@ -185,7 +185,7 @@ background-color: #f1f1f1;
                    <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-                   $query="select * from reg_user where user_type='user'";
+                   $query="select * from reg_user where user_type='user' and status='ok'";
                    $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
                    while($row=mysqli_fetch_array($result))
 {
@@ -214,7 +214,7 @@ echo"<td>".$row['name']."</td>"."<td>".$row['username']."</td>"."<td>".$row['phn
                 <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-                   $query="select * from reg_user where user_type='deliveryag'";
+                   $query="select * from reg_user where user_type='deliveryag' and status='ok'";
                    $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
                    while($row=mysqli_fetch_array($result))
 {

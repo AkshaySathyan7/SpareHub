@@ -144,15 +144,15 @@
             Admin
         </h2>
         
-        <a href="dashboard.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
-        <a href="manage_customer.html" class="fade-in"><i class="fas fa-users"></i> Manage Customers</a>
-        <a href="manage_shop.html" class="fade-in"><i class="fas fa-store"></i> Manage Shop</a>
-        <a href="manage_del.html" class="fade-in"><i class="fas fa-truck"></i> Manage Delivery Agents</a>
-        <a href="approve.html"><i class="fas fa-file-alt"></i> Approved Users</a>
-        <a href="pending.html"><i class="fas fa-file-alt"></i> Pending Approval</a>
-        <a href="verify_complaint.html" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
-        <a href="admin.html" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="./dashboard.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
+        <a href="manage_customer.php" class="fade-in"><i class="fas fa-users"></i> Manage Customers</a>
+        <a href="manage_shop.php" class="fade-in"><i class="fas fa-store"></i> Manage Shop</a>
+        <a href="manage_del.php" class="fade-in"><i class="fas fa-truck"></i> Manage Delivery Agents</a>
+        <a href="approve.php" class="fade-in"><i class="fas fa-users"></i></i> Approved users</a>
+        <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
+        <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
+        <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
+        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>a>
     </div>
     <div class="dashboard">
         <header>

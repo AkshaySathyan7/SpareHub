@@ -193,16 +193,16 @@
         <div class="dropdown">
         <a href="#" class="fade-in"><i class="fas fa-users"></i>User-Mangement</a>
      <div class="dropdown-content">
-        <a href="manage_customer.html" class="fade-in"><i class="fas fa-users"></i> Manage Customers</a>
-        <a href="manage_shop.html" class="fade-in"><i class="fas fa-users"></i> Manage Shop</a>
-        <a href="manage_del.html" class="fade-in"><i class="fas fa-users"></i> Manage Delivery-Agent</a>
+        <a href="manage_customer.php" class="fade-in"><i class="fas fa-users"></i> Manage Customers</a>
+        <a href="manage_shop.php" class="fade-in"><i class="fas fa-users"></i> Manage Shop</a>
+        <a href="manage_del.php" class="fade-in"><i class="fas fa-users"></i> Manage Delivery-Agent</a>
     </div>
 </div>
-    <a href="approve.html" class="fade-in"><i class="fas fa-users"></i></i> Approved users</a>
-    <a href="pending.html" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
-     <a href="verify_complaint.html" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaint</a>
-        <a href="admin.html" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <a href="approve.php" class="fade-in"><i class="fas fa-users"></i></i> Approved users</a>
+    <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
+     <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaint</a>
+        <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <div class="main-content">
@@ -220,14 +220,14 @@
 
         <div class="statistics">
         <div class="stat-card">
-    <a href="user_list.html">
+    <a href="user_list.php">
         <h2><i class="fas fa-users"></i> User-list</h2>
         <p></p>
     </a>
 </div>
 
             <div class="stat-card">
-            <a href="complaint_list.html">
+            <a href="complaint_list.php">
                 <h2><i class="fas fa-file-alt"></i>Complaint-list</h2>
                 <p></p>
             </a>
