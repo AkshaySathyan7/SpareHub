@@ -190,7 +190,7 @@ session_start();
         <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
         <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
         <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     <div class="dashboard">
         <header>

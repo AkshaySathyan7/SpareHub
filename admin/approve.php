@@ -165,7 +165,7 @@ background-color: #f1f1f1;
         <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
         <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
         <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     
     <div class="container">
@@ -185,7 +185,7 @@ background-color: #f1f1f1;
                    <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-                   $query="select * from reg_user where user_type='user' and status='ok'";
+                   $query="select * from reg_user where user_type='shop' and status='ok'";
                    $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
                    while($row=mysqli_fetch_array($result))
 {

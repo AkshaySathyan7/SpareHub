@@ -210,7 +210,7 @@ session_start();
         <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
         <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
         <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <div class="dashboard">
@@ -247,21 +247,18 @@ while($row=mysqli_fetch_array($result))
 {
 echo"<tr>";
 echo"<td>".$row['name']."</td>"."<td>".$row['address']."</td>"."<td>".$row['phno']."</td>"."<td>";
-}
-
-$query1="select * from user_shop";
+$re=$row['username'];
+$query1="select * from user_shop where username='$re'";
                       $result1 = mysqli_query($con, $query1) or die("Couldn't connect to server: " . mysqli_error($con));
 while($row1=mysqli_fetch_array($result1))
 {
     echo $row1['shop_id']."</td>"."<td>".$row1['shop_names']."</td>"."<td>";
 }
-while($row=mysqli_fetch_array($result))
-{
-    ?>
-<a href=".php?username=<?php echo $row['username'];?>">
-<button class="button" style="background-color: #28a745;">Approval</button>
+  ?>
+<a href="shopapprove.php?username=<?php echo $row['username'];?>">
+<button class="button" style="background-color: #28a745;">Approve</button>
 </a>
-<a href=".php?username=<?php echo $row['username'];?>">
+<a href="shopreject.php?username=<?php echo $row['username'];?>">
 <button class="button" style="background-color: #ac1515;">Reject</button>
 </a>
 <?php
