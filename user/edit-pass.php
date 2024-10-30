@@ -112,8 +112,6 @@ session_start();
     <div class="edit-profile-dashboard">
         <h1>Edit Profile</h1>
         <div class="profile-card">
-            <img src="profile-pic.png" alt="Profile Picture" class="profile-pic"><br>
-            <button class="upload-btn">Change Profile Picture</button>
  <p>       <?php
 //echo $_SESSION["username"];
 echo $_SESSION["email"];
