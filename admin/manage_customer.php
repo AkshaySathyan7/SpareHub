@@ -169,7 +169,6 @@ background-color: #f1f1f1;
         <a href="manage_shop.php" class="fade-in"><i class="fas fa-store"></i> Manage Shop</a>
         <a href="manage_del.php" class="fade-in"><i class="fas fa-truck"></i> Manage Delivery Agents</a>
         <a href="approve.php" class="fade-in"><i class="fas fa-users"></i></i> Approved users</a>
-        <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
         <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
         <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -182,14 +181,31 @@ background-color: #f1f1f1;
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
+                        <th>Username</th>
                         <th>Email</th>
-                        <th>Status</th>
+                        <th>Address</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
+                <?php
+                $con = mysqli_connect("localhost", "root", "", "sparehub");
+
+                      $query="select * from reg_user where user_type='user' and status='ok'";
+                      $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+                     
+while($row=mysqli_fetch_array($result))
+{
+echo"<tr>";
+echo"<td>".$row['name']."</td>"."<td>".$row['username']."</td>"."<td>".$row['email']."</td>"."<td>".$row['address']."</td>";
+
+
+}
+
+echo "</tr>";
+
+
+         ?>     
                    
                 </tbody>
             </table>

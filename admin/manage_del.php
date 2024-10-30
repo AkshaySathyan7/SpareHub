@@ -205,7 +205,6 @@ session_start();
         <a href="manage_shop.php" class="fade-in"><i class="fas fa-store"></i> Manage Shop</a>
         <a href="manage_del.php" class="fade-in"><i class="fas fa-truck"></i> Manage Delivery Agents</a>
         <a href="approve.php" class="fade-in"><i class="fas fa-users"></i></i> Approved users</a>
-        <a href="pending.php" class="fade-in"><i class="fas fa-file-alt"></i> Pending Approval</a>
         <a href="verify_complaint.php" class="fade-in"><i class="fas fa-file-alt"></i> Verify Complaints</a>
         <a href="admin.php" class="fade-in"><i class="fa-solid fa-user-tie"></i>New Admin</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
