@@ -247,10 +247,10 @@ while($row=mysqli_fetch_array($result))
 {
 echo"<tr>";
 echo"<td>".$row['name']."</td>"."<td>".$row['username']."</td>"."<td>".$row['email']."</td>"."<td>".$row['address']."</td>"."<td>".$row['phno']."</td>"."<td>";?>
-<a href=".php?username=<?php echo $row['username'];?>">
+<a href="approveagent.php?username=<?php echo $row['username'];?>">
 <button class="button" style="background-color: #28a745;">Approval</button>
 </a>
-<a href=".php?username=<?php echo $row['username'];?>">
+<a href="rejectagent.php?username=<?php echo $row['username'];?>">
 <button class="button" style="background-color: #ac1515;">Reject</button>
 </a>
 <?php
