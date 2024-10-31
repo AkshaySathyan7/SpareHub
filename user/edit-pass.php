@@ -18,7 +18,7 @@ session_start();
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin-top:50px;
+            margin-top:70px;
         }
         
         * {
@@ -168,8 +168,8 @@ session_start();
 
     
     <div class="edit-profile-dashboard">
-        <h1>Edit Profile-<?php
-        echo $_SESSION["email"];
+        <h1>Edit Profile<br><?php
+       // echo $_SESSION["email"];
         ?></h1>
         <div class="profile-card">
         <?php
@@ -210,7 +210,7 @@ $row=mysqli_fetch_array($result)
                 <label for="address">Address</label>
                 <textarea id="address" name="address" required><?php echo  $row['address']; ?></textarea>
             </div>
-            <button type="submit" name="upd" class="save-btn">Save Changes</button>
+          <center>  <button type="submit" name="upd" class="save-btn">Save Changes</button></center>
         </form>
     </div>
 </body>

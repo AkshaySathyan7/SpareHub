@@ -198,8 +198,19 @@ echo $_SESSION["email"];
             </h1>
             <p>Explore our wide range of two wheeler spare parts and accessories.</p>
         </div>
-
+<center>
         <div class="categories">
+        <div class="category-card">
+                <img src="assets/honda.png" alt="Honda Logo">
+                <h2>Your Vehicle</h2>
+                <p>Find genuine spare parts for your motorcycle.</p>
+                <a href="ownvehicle.php"><button class="btn">Explore</button></a>
+            </div><br>
+    </div>
+    <br>
+    <h1><u>Other Brands</u></h1></center>
+    <div class="categories">
+
             <div class="category-card">
                 <img src="assets/honda.png" alt="Honda Logo">
                 <h2>Honda</h2>
