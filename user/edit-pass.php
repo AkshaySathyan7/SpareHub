@@ -171,9 +171,9 @@ session_start();
         <h1>Edit Profile-<?php
         echo $_SESSION["email"];
         ?></h1>
-        <div class="
+        <div class="profile-card">
         <?php
-        echo $_SESSION["email"];
+      //  echo $_SESSION["email"];
         ?>
         
  <p>       <?php
@@ -185,14 +185,14 @@ $ac=$_SESSION["email"];
         <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-$query = "select * from reg_user where username='$ac';";
+$query = "select * from reg_user where username='$ac'";
 $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
 $row=mysqli_fetch_array($result)
 
         ?>
         
         
-        <form action="updatedetails.php" method="POST" class="profile-form">
+         <form action="updatedetails.php" method="POST" class="profile-form">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="<?php echo  $row['name']; ?>" required>
@@ -210,11 +210,7 @@ $row=mysqli_fetch_array($result)
                 <label for="address">Address</label>
                 <textarea id="address" name="address" required><?php echo  $row['address']; ?></textarea>
             </div>
-            <div class="form-group">
-                <label for="address">Change password</label>
-                <textarea id="address" name="address" required><?php echo  $row['password']; ?></textarea>
-            </div>
-            <center><button type="submit" name="upd" class="save-btn">Save Changes</button></center>
+            <button type="submit" name="upd" class="save-btn">Save Changes</button>
         </form>
     </div>
 </body>

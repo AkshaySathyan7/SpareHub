@@ -9,8 +9,7 @@ $name = $_POST["name"];
 $email = $_POST["email"];
 $phno = $_POST["phno"];
 $address=$_POST["address"];
-$password=$_POST["password"];
-$query = "update reg_user set name='$name', phno='$phno', email='$email', address='$address',password='$password' where username='$ac'";
+$query = "update reg_user set name='$name', phno='$phno', email='$email', address='$address' where username='$ac'";
 
 if (mysqli_query($con, $query)){
     echo "<script>
