@@ -228,6 +228,12 @@
                 <a href="solution.html"><button class="btn">View Solution</button></a>  
             </div>
             
+            <div class="dashboard-card">
+                <h2>Feedback</h2>
+                <p>View Feedback from customers.</p>
+                <a href="feedback.php"> <button class="btn">view Feedback</button></a>
+            </div>
+            
         </div>
     </div>
 </body>

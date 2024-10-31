@@ -172,7 +172,8 @@ session_start();
         <h2>Spare Hub<i class="fa-regular fa-user"></i></i></h2>
         <a href="userdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
         <a href="edit-pass.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
-        <a href="categories.html" class="fade-in"><i class="fas fa-list"></i> Categories</a>
+        <a href="complaint.php" class="fade-in"><i class="fa-solid fa-comment"></i> Complaint</a>
+        <a href="feedback.php" class="fade-in"><i class="fa-solid fa-pen"></i> Feedback</a>
         <a href="cart.html" class="fade-in"><i class="fas fa-shopping-cart"></i> Cart</a>
         <a href="profile.html" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
         <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>

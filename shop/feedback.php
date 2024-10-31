@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
@@ -21,6 +20,8 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding-right:20px;
+
     }
     
     h1 {
@@ -65,18 +66,6 @@
    
     }
     
-    .pending {
-        background-color: #f44336;
-        color: white;
-    }
-    
-    .approve:hover {
-        background-color: #45a049;
-    }
-    
-    .pending:hover {
-        background-color: #e53935;
-    }
     .s1
     {
         color: orange;
@@ -86,24 +75,22 @@
 <body>
     
     <div class="container">
-        <h1 class="s1">SHIPPED-ITEMS</h1>
+        <h1 class="s1">FEEDBACK</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Sl. No</th>
-                    <th>Order ID</th>
-                    <th>Product Name</th>
-                    <th>Location</th>
-                    <th>Status</th>
+                    <th>NAME</th>
+                    <th>E-mail</th>
+                    <th>Rating</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>12313</td>
-                    <td>nsjdfjd</td>
-                    <td>Muvattupuzhs</td>
-                    <td>Shipped</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                    
                 </tr>
                

@@ -5,12 +5,10 @@ $con = mysqli_connect("localhost", "root", "", "sparehub");
 
 if(isset($_POST["upd"]))
 {
-$name = $_POST["name"];
-$email = $_POST["email"];
-$phno = $_POST["phno"];
-$address=$_POST["address"];
-$password=$_POST["password"];
-$query = "update reg_user set name='$name', phno='$phno', email='$email', address='$address',password='$password' where username='$ac'";
+$password = $_POST["password"];
+$currentpass = $_POST["new-password"];
+$conpass=$_POST["confirm-password"];
+$query = "update reg_user set name='$name', phno='$phno', email='$email', address='$address' where username='$ac'";
 
 if (mysqli_query($con, $query)){
     echo "<script>
