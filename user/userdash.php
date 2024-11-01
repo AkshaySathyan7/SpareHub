@@ -174,9 +174,9 @@ session_start();
         <a href="edit-pass.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
         <a href="complaint.php" class="fade-in"><i class="fa-solid fa-comment"></i> Complaint</a>
         <a href="feedback.php" class="fade-in"><i class="fa-solid fa-pen"></i> Feedback</a>
-        <a href="cart.html" class="fade-in"><i class="fas fa-shopping-cart"></i> Cart</a>
-        <a href="profile.html" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="cart.php" class="fade-in"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <div class="main-content">
@@ -221,10 +221,10 @@ echo $_SESSION["email"];
                 <img src="assets/yamaha.png" alt="Yamaha Logo">
                 <h2>Yamaha</h2>
                 <p>Get authentic spare parts for your Yamaha motorcycle.</p>
-                <a href="yamaha.html"><button class="btn">Explore</button></a>
+                <a href="yamaha.php"><button class="btn">Explore</button></a>
             </div>
             <div class="category-card">
-                <img src="assets/ktm.png" alt="Suzuki Logo">
+                <img src="assets/ktm.php" alt="Suzuki Logo">
                 <h2>KTM</h2>
                 <p>Explore our collection of spare parts for your KTM motorcycle.</p>
                 <button class="btn">Explore</button>

@@ -170,9 +170,9 @@
             <a href="edit-pass.php"><i class="fas fa-list"></i> Profile</a>
             <a href="complaint.php"><i class="fa-solid fa-comment"></i> Complaint</a>
             <a href="categories.html"><i class="fa-solid fa-pen"></i> Feedback</a>
-            <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
-            <a href="profile.html"><i class="fas fa-file-alt"></i> Orders</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="profile.php"><i class="fas fa-file-alt"></i> Orders</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
         <div class="rating-container">
             <h1>We Value Your Review</h1>

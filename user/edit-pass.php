@@ -161,9 +161,9 @@ session_start();
         <a href="edit-pass.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
         <a href="complaint.php" class="fade-in"><i class="fa-solid fa-comment"></i> Complaint</a>
         <a href="feedback.php" class="fade-in"><i class="fa-solid fa-pen"></i> Feedback</a>
-        <a href="cart.html" class="fade-in"><i class="fas fa-shopping-cart"></i> Cart</a>
-        <a href="profile.html" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="cart.php" class="fade-in"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     
