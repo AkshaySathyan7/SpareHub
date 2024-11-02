@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Dashboard</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="shopstyle.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #6e88c0;
+            background-color: #d8dadf;
             margin: 0;
-            display: flex;
+            display: flex; /* Use flexbox layout */
         }
 
         .sidebar {
@@ -21,8 +21,12 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            transition: background-color 0.3s ease;
-            height: 100vh; /* Make sidebar full height */
+            height: 100vh; /* Full height */
+        }
+
+        .sidebar h2 {
+            margin: 0 0 20px;
+            text-align: center;
         }
 
         .sidebar a {
@@ -30,30 +34,13 @@
             text-decoration: none;
             margin: 15px 0;
             font-size: 18px;
-            position: relative;
-            transition: color 0.3s ease;
             display: flex;
             align-items: center;
+            transition: color 0.3s ease;
         }
 
         .sidebar a:hover {
             color: #ff9800;
-        }
-
-        .sidebar a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 2px;
-            background: #ff9800;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .sidebar a:hover::after {
-            transform: scaleX(1);
         }
 
         .sidebar i {
@@ -61,9 +48,9 @@
         }
 
         .container {
-            flex: 1; /* Allow container to take remaining space */
+            flex: 1; /* Allow container to fill remaining space */
             max-width: 1000px;
-            margin: 20px;
+            margin: 20px; /* Space around the container */
             background: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -96,6 +83,10 @@
             background-color: #f1f1f1;
         }
 
+        .s1 {
+            color: orange;
+        }
+
         button {
             padding: 6px 12px;
             margin-right: 5px;
@@ -110,8 +101,17 @@
             color: white;
         }
 
-        .s1 {
-            color: orange;
+        .pending {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .approve:hover {
+            background-color: #45a049;
+        }
+
+        .pending:hover {
+            background-color: #e53935;
         }
     </style>
 </head>
@@ -119,21 +119,23 @@
     <div class="sidebar">
         <h2>Spare Hub</h2>
         <a href="shopdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
-        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
-        <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i> Profile</a>
+        <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i> Add-product</a>
         <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
         <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     
     <div class="container">
-        <h1 class="s1">FEEDBACK</h1>
+        <h1 class="s1">SOLUTION</h1>
         <table>
             <thead>
                 <tr>
-                    <th>NAME</th>
-                    <th>E-mail</th>
-                    <th>Rating</th>
+                    <th>Sl. No</th>
+                    <th>Order ID</th>
+                    <th>Name</th>
+                    <th>Number of Products</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -141,7 +143,13 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td>
+                        <h4>SOLVED</h4>
+                        <h4>REJECTED</h4>
+                    </td>
                 </tr>
+                <!-- Additional rows can be added here -->
             </tbody>
         </table>
     </div>

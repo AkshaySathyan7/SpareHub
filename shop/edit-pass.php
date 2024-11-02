@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shopstyle.css">
     <title>Edit Profile Dashboard</title>
 </head>
 <body>
@@ -107,6 +108,15 @@
         }
         
     </style>
+    <div class="sidebar">
+        <h2>Spare Hub</h2>
+        <a href="shopdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
+        <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
+        <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
+        <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
     <div class="edit-profile-dashboard">
         <h1>Edit Profile</h1>
         <div class="profile-card">

@@ -224,7 +224,7 @@ echo $_SESSION["email"];
                 <a href="yamaha.php"><button class="btn">Explore</button></a>
             </div>
             <div class="category-card">
-                <img src="assets/ktm.php" alt="Suzuki Logo">
+                <img src="assets/ktm.png" alt="Suzuki Logo">
                 <h2>KTM</h2>
                 <p>Explore our collection of spare parts for your KTM motorcycle.</p>
                 <button class="btn">Explore</button>

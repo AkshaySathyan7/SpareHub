@@ -186,11 +186,11 @@
     <div class="sidebar">
         <h2>Spare Hub</h2>
         <a href="shopdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
-        <a href="profile.html" class="fade-in"><i class="fas fa-list"></i>Profile</a>
-        <a href="add.html" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
-        <a href="order_list.html" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
-        <a href="complaint.html" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
+        <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
+        <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
+        <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <div class="main-content">
