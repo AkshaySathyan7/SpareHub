@@ -158,21 +158,21 @@ session_start();
             <h2>Spare Hub</h2>
             <a href="shopdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
             <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
-            <a href="add.html" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
-            <a href="order_list.html" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
-            <a href="complaint.html" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
-            <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
+            <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
+            <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
+            <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
     </div>
 
     
     <div class="edit-profile-dashboard">
-        <h1>Edit Profile-<?php
-        echo $_SESSION["email"];
+        <h1>Edit Profile<?php
+       // echo $_SESSION["email"];
         ?></h1>
-        <div class="
+        <div class="profile-card">
         <?php
-        echo $_SESSION["email"];
+      //  echo $_SESSION["email"];
         ?>
         
  <p>       <?php
@@ -189,7 +189,7 @@ $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mys
 $row=mysqli_fetch_array($result)
 
         ?>
-        
+        <br>
         
         <form action="updatedetails.php" method="POST" class="profile-form">
             <div class="form-group">
@@ -209,10 +209,7 @@ $row=mysqli_fetch_array($result)
                 <label for="address">Address</label>
                 <textarea id="address" name="address" required><?php echo  $row['address']; ?></textarea>
             </div>
-            <div class="form-group">
-                <label for="address">Change password</label>
-                <textarea id="address" name="address" required><?php echo  $row['password']; ?></textarea>
-            </div>
+    
             <center><button type="submit" name="upd" class="save-btn">Save Changes</button></center>
         </form>
     </div>
