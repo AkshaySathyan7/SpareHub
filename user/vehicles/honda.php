@@ -1,0 +1,188 @@
+<?php
+session_start();
+?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Spare Parts</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaeaea; /* Light gray background */
+        }
+        
+        .header {
+            background-color: #181717; /* Bright header color */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .header img {
+            max-width: 150px; /* Adjust logo size */
+            margin-bottom: 10px; /* Spacing below the logo */
+        }
+        
+        .header h1 {
+            margin: 0;
+        }
+        
+        .search-bar {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .search-bar button {
+            padding: 10px;
+            border: none;
+            background-color: #ff9800; /* Slightly darker button color */
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 15px;
+            width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+            text-align: center;
+            transition: transform 0.2s; /* Smooth scale effect */
+        }
+
+        .product-card:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .product-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        
+        .product-card p {
+            color: #888;
+            margin: 5px 0;
+        }
+        
+        .product-card .price {
+            color: #ff5722; /* Price color */
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .buy-button
+        {
+            background-color: #ffa726;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .cart-button
+        {
+            background-color: #ffa726;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top:20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="/assets/honda.png" alt="Honda Logo"> <!-- Honda logo -->
+        <h1>Honda Spare Parts Store
+            <?php
+          //  echo $_SESSION["email"];
+         
+            ?>
+        </h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for spare parts...">
+            <button type="submit">Search</button>
+        </div>
+    </header>
+    <?php
+        $con = mysqli_connect("localhost", "root", "", "sparehub");
+        $veh_type = $_GET["veh_type"];
+        $ab = preg_replace('/(?<=\d)(?=[a-zA-Z])|(?<=[a-zA-Z])(?=\d)/', ' ', $veh_type);
+       // echo $veh_type;
+        $query = "select * from spare_parts where company='Honda' and veh_name='$ab'";
+        $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+    ?>
+    <main>
+        <section class="product-container">
+            <?php
+        while ($row = mysqli_fetch_array($result)) 
+        {
+?>
+            <div class="product-card">
+                <?php
+               // <img src="./assets/air-filter.webp" alt="Spare Part 1">
+                ?>
+                <h3> <?php echo $row['partname']; ?></h3>
+
+                <p><?php echo $row['p_comp']; ?></p>
+                <div class="price"><?php echo $row['price']; ?></div>
+                <button class="buy-button">Buy Now</button>
+                <button class="cart-button">Add to Cart</button>
+            </div>
+            <?php
+        }
+        ?>
+           
+            <!-- Add more products as needed -->
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Honda Spare Parts Store</p>
+    </footer>
+</body>
+</html>
