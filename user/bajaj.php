@@ -136,8 +136,8 @@ session_start();
 </head>
 <body>
     <header class="header">
-        <img src="./assets/yamaha.png" alt="Honda Logo"> <!-- Honda logo -->
-        <h1>Yamaha Spare Parts Store</h1>
+        <img src="./assets/bajaj.png" alt="Honda Logo"> <!-- Honda logo -->
+        <h1>Bajaj Spare Parts Store</h1>
         <div class="search-bar">
             <input type="text" placeholder="Search for spare parts...">
             <button type="submit">Search</button>
@@ -148,7 +148,7 @@ session_start();
     <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-        $query = "select * from spare_parts where company='Yamaha'";
+        $query = "select * from spare_parts where company='Bajaj'";
         $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
     ?>
         <section class="product-container">
@@ -179,7 +179,7 @@ session_start();
     </main>
 
     <footer class="footer">
-        <p>&copy; 2024 Honda Spare Parts Store</p>
+        <p>&copy; 2024 SpareHub Store</p>
     </footer>
 </body>
 </html>

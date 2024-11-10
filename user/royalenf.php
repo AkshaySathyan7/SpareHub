@@ -20,7 +20,7 @@ session_start();
         }
         
         .header {
-            background-color: #ba0a0a; /* Bright header color */
+            background-color: #181717; /* Bright header color */
             padding: 20px;
             text-align: center;
             color: white;
@@ -136,23 +136,27 @@ session_start();
 </head>
 <body>
     <header class="header">
-        <img src="./assets/yamaha.png" alt="Honda Logo"> <!-- Honda logo -->
-        <h1>Yamaha Spare Parts Store</h1>
+        <img src="./assets/royal.jpeg" alt="royal Logo"> <!-- Honda logo -->
+        <h1>Royal Enfield Spare Parts Store
+            <?php
+          //  echo $_SESSION["email"];
+
+            ?>
+        </h1>
         <div class="search-bar">
             <input type="text" placeholder="Search for spare parts...">
             <button type="submit">Search</button>
         </div>
     </header>
-    
-    <main>
     <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-        $query = "select * from spare_parts where company='Yamaha'";
+        $query = "select * from spare_parts where company='RoyalEnfield'";
         $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
     ?>
+    <main>
         <section class="product-container">
-        <?php
+            <?php
         while ($row = mysqli_fetch_array($result)) 
         {
 ?>
@@ -170,9 +174,6 @@ session_start();
             <?php
         }
         ?>
-           
-            <!-- Add more products as needed -->
-        </section>
            
             <!-- Add more products as needed -->
         </section>

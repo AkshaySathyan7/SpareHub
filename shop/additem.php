@@ -1,4 +1,5 @@
 <?php
+session_start();
 $con = mysqli_connect("localhost", "root", "", "sparehub");
 
 if (!$con) {
@@ -19,10 +20,12 @@ $company = $_POST["company"];
 $vehmodel = $_POST["vehmodel"];
 $brand= $_POST["brand"];
 $year= $_POST["year"];
+$sho=$_SESSION["email"];
+
 // Establishing connection to the database
 
 // Insert into reg_user table
-$query = "INSERT INTO spare_parts VALUES ('$partname', '$price', '$type', '$company', '$partnumber', '$vehmodel', '$war', '$brand', '$comp','$year')";
+$query = "INSERT INTO spare_parts VALUES ('$partname', '$price', '$type', '$company', '$partnumber', '$vehmodel', '$war', '$brand', '$comp','$year','$sho')";
 
 if (mysqli_query($con, $query)) {
     // Registration successful

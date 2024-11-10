@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -135,49 +137,44 @@
 <body>
     <header class="header">
         <img src="./assets/honda.png" alt="Honda Logo"> <!-- Honda logo -->
-        <h1>Honda Spare Parts Store</h1>
+        <h1>Honda Spare Parts Store
+            <?php
+          //  echo $_SESSION["email"];
+
+            ?>
+        </h1>
         <div class="search-bar">
             <input type="text" placeholder="Search for spare parts...">
             <button type="submit">Search</button>
         </div>
     </header>
-    
+    <?php
+        $con = mysqli_connect("localhost", "root", "", "sparehub");
+
+        $query = "select * from spare_parts where company='Honda'";
+        $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+    ?>
     <main>
         <section class="product-container">
+            <?php
+        while ($row = mysqli_fetch_array($result)) 
+        {
+?>
             <div class="product-card">
-                <img src="./assets/air-filter.webp" alt="Spare Part 1">
-                <h3>Brake Pad Set</h3>
-                <p>Compatible with Honda Activa</p>
-                <div class="price">Rs 20000</div>
+                <?php
+               // <img src="./assets/air-filter.webp" alt="Spare Part 1">
+                ?>
+                <h3> <?php echo $row['partname']; ?></h3>
+
+                <p><?php echo $row['p_comp']; ?></p>
+                <div class="price"><?php echo $row['price']; ?></div>
                 <button class="buy-button">Buy Now</button>
                 <button class="cart-button">Add to Cart</button>
             </div>
-            <div class="product-card">
-                <img src="./assets/honjpeg." alt="Spare Part 2">
-                <h3>Air Filter</h3>
-                <p>Compatible with Honda CBR</p>
-                <div class="price">Rs 2000</div>
-                <button class="buy-button">Buy Now</button>
-                <button class="cart-button">Add to Cart</button>
-            </div>
-            
-            </div>
-            <div class="product-card">
-                <img src="part3.jpg" alt="Spare Part 3">
-                <h3>Oil Filter</h3>
-                <p>Compatible with Honda Dio/p>
-                <div class="price">Rs 2000</div>
-                <button class="buy-button">Buy Now</button>
-                <button class="cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="part4.jpg" alt="Spare Part 4">
-                <h3>Battery</h3>
-                <p>Compatible with all Honda models</p>
-                <div class="price">Rs 20000</div>
-                <button class="buy-button">Buy Now</button>
-                <button class="cart-button">Add to Cart</button>
-            </div>
+            <?php
+        }
+        ?>
+           
             <!-- Add more products as needed -->
         </section>
     </main>

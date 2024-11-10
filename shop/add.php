@@ -168,7 +168,8 @@
                     <option value="Others">Others</option>
 
                 </select>
-                <input type="number" id="partNumber" name="partnumber" placeholder="Part Number" required>
+                <input type="number" id="partNumber" name="partnumber" placeholder="Total Quantity" required>
+
                 <input type="text" id="war" name="war" placeholder="Warranty (years)" required>
                 <input type="text" id="comp" name="comp" placeholder="Enter Product Company" required>
 
@@ -185,6 +186,8 @@
                     <option value="Yamaha">Yamaha</option>
                     <option value="KTM">KTM</option>
                     <option value="RoyalEnfield">Royal Enfield</option>
+                    <option value="all">All Type</option>
+
                 </select>
                 <select id="model" name="vehmodel" required>
                     <option value="" disabled selected>Select Model</option>
@@ -209,7 +212,8 @@
             Hero: ["Splendor Plus", "HF Deluxe", "Passion Pro", "Xtreme 200R", "Maestro Edge"],
             Yamaha: ["YZF R15", "Fascino", "FZ-S", "MT-15", "Saluto", "Ray ZR"],
             KTM: ["Duke 200", "RC 390", "Duke 390", "Adventure 390"],
-            RoyalEnfield: ["Classic 350", "Bullet 350", "Himalayan", "Meteor 350", "Interceptor 650"]
+            RoyalEnfield: ["Classic 350", "Bullet 350", "Himalayan", "Meteor 350", "Interceptor 650"],
+            all: ["All Vehicle"]
         };
 
         const companySelect = document.getElementById('company');
