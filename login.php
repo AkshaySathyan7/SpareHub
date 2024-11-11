@@ -21,7 +21,7 @@ if(mysqli_num_rows($result)>0)
 	if($r=="user")
 	{
 
-		
+		$u=$_SESSION["email"];
 		header('location:user/userdash.php');
 	}
 	else if($r=="admin")

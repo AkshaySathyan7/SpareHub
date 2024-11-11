@@ -204,6 +204,7 @@ echo $_SESSION["email"];
                 <img src="assets/honda.png" alt="Honda Logo">
                 <h2>Your Vehicle</h2>
                 <p>Find genuine spare parts for your motorcycle.</p>
+                
                 <a href="ownvehicle.php"><button class="btn">Explore</button></a>
             </div><br>
     </div>
@@ -215,7 +216,8 @@ echo $_SESSION["email"];
                 <img src="assets/honda.png" alt="Honda Logo">
                 <h2>Honda</h2>
                 <p>Find genuine spare parts for your Honda motorcycle.</p>
-                <a href="honda.html"><button class="btn">Explore</button></a>
+                
+                <a href="honda.php"><button class="btn">Explore</button></a>
             </div>
             <div class="category-card">
                 <img src="assets/yamaha.png" alt="Yamaha Logo">
@@ -227,19 +229,19 @@ echo $_SESSION["email"];
                 <img src="assets/ktm.png" alt="Suzuki Logo">
                 <h2>KTM</h2>
                 <p>Explore our collection of spare parts for your KTM motorcycle.</p>
-                <button class="btn">Explore</button>
+                <a href="ktm.php"><button class="btn">Explore</button></a>
             </div>
             <div class="category-card">
                 <img src="assets/royal.jpeg" alt="Hero Logo">
                 <h2>Royal Enfield</h2>
                 <p>Find genuine spare parts for your Royal Enfield motorcycle.</p>
-                <button class="btn">Explore</button>
+                <a href="royalenf.php"><button class="btn">Explore</button></a>
             </div>
             <div class="category-card">
                 <img src="assets/tvs.png" alt="TVS Logo">
                 <h2>TVS</h2>
                 <p>Get authentic spare parts for your TVS motorcycle.</p>
-                <button class="btn">Explore</button>
+                <a href="tvs.php"><button class="btn">Explore</button></a>
             </div>
         </div>
     </div>

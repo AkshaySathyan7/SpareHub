@@ -21,11 +21,13 @@ $vehmodel = $_POST["vehmodel"];
 $brand= $_POST["brand"];
 $year= $_POST["year"];
 $sho=$_SESSION["email"];
+$rating=0;
+$tot_cust=0;
 
 // Establishing connection to the database
 
 // Insert into reg_user table
-$query = "INSERT INTO spare_parts VALUES ('$partname', '$price', '$type', '$company', '$partnumber', '$vehmodel', '$war', '$brand', '$comp','$year','$sho')";
+$query = "INSERT INTO spare_parts VALUES ('$partname', '$price', '$type', '$company', '$partnumber', '$vehmodel', '$war', '$brand', '$comp','$year','$sho','$rating','$tot_cust')";
 
 if (mysqli_query($con, $query)) {
     // Registration successful
