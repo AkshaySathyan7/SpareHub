@@ -1,6 +1,7 @@
 <?php
 session_start(); // Start session to track cart items
-$user=$_SESSION["email"];
+$user = $_SESSION["email"]; // User email for identification
+
 // Check if the user is adding an item to the cart
 if (isset($_POST['action']) && $_POST['action'] == 'add') {
     $partname = $_POST['partname'];
@@ -30,6 +31,23 @@ if (isset($_POST['action']) && $_POST['action'] == 'add') {
             'shop' => $shop,
             'quantity' => 1 // Initialize quantity to 1
         );
+    }
+}
+
+// Handle updating quantities in the cart
+if (isset($_POST['action']) && ($_POST['action'] == 'increase' || $_POST['action'] == 'decrease')) {
+    $partname = $_POST['partname'];
+    
+    // Find and update the item in the session cart
+    foreach ($_SESSION['cart'] as &$item) {
+        if ($item['partname'] == $partname) {
+            if ($_POST['action'] == 'increase') {
+                $item['quantity']++;
+            } elseif ($_POST['action'] == 'decrease' && $item['quantity'] > 1) {
+                $item['quantity']--;
+            }
+            break;
+        }
     }
 }
 
@@ -225,7 +243,7 @@ body {
     position: relative;
     bottom: 0;
     width: 100%;
-    margin-top:238px;
+    margin-top: 238px;
 }
 
 .buy-button, .cart-button {
@@ -246,61 +264,87 @@ body {
 </head>
 <body>
 <div class="sidebar">
-        <h2>Spare Hub<i class="fa-regular fa-user"></i></i></h2>
-        <a href="userdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
-        <a href="edit-pass.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
-        <a href="complaint.php" class="fade-in"><i class="fa-solid fa-comment"></i> Complaint</a>
-        <a href="feedback.php" class="fade-in"><i class="fa-solid fa-pen"></i> Feedback</a>
-        <a href="cart.php" class="fade-in"><i class="fas fa-shopping-cart"></i> Cart</a>
-        <a href="profile.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
-        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <h2>Spare Hub<i class="fa-regular fa-user"></i></h2>
+    <a href="userdash.php"><i class="fas fa-home"></i> Home</a>
+    <a href="edit-pass.php"><i class="fas fa-list"></i> Profile</a>
+    <a href="complaint.php"><i class="fa-solid fa-comment"></i> Complaint</a>
+    <a href="feedback.php"><i class="fa-solid fa-pen"></i> Feedback</a>
+    <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
+    <a href="profile.php"><i class="fas fa-file-alt"></i> Orders</a>
+    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>
+
+<header class="header">
+    <img src="/assets/honda.png" alt="Honda Logo">
+    <h1>Honda Spare Parts Store</h1>
+    <div class="search-bar">
+        <form action="" method="GET">
+            <input type="text" name="search" placeholder="Search for spare parts..." value="<?php echo htmlspecialchars($searchQuery); ?>">
+            <button type="submit">Search</button>
+        </form>
     </div>
-    <header class="header">
-        <img src="/assets/honda.png" alt="Honda Logo">
-        <h1>Honda Spare Parts Store</h1>
-        <div class="search-bar">
-            <form action="" method="GET">
-                <input type="text" name="search" placeholder="Search for spare parts..." value="<?php echo htmlspecialchars($searchQuery); ?>">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-    </header>
+</header>
 
-    <main>
-        <section class="product-container">
-            <?php while ($row = mysqli_fetch_array($result)): ?>
-                <div class="product-card">
-                    <h3><?php echo $row['item']; ?></h3>
-                    <p><?php echo $row['company']; ?></p>
-                    <p><?php echo $row['count']; ?></p>
-
-                    <div class="price">$<?php echo number_format($row['price'], 2); ?></div>
-
-                    <!-- Add to Cart form -->
-                  
-                    <br>
-
-                    <!-- Buy Now form -->
-                   
-                </div>
-            <?php endwhile; ?>
-        </section>
-    </main>
+<main>
+    <section class="product-container">
     <?php
+$totalPrice = 0; // Initialize a variable to store the total price
 
+while ($row = mysqli_fetch_array($result)): 
+    $itemPrice = $row['price'] * $row['count']; // Calculate the price for the current item
 
-
+    // Accumulate the price for all items
+    $totalPrice += $itemPrice;
 ?>
+    <div class="product-card">
+        <h3><?php echo $row['item']; ?></h3>
+        <p><?php echo $row['company']; ?></p>
+        <p><?php echo $row['count']; ?></p>
 
-   
-    
+        <div class="price">$<?php echo number_format($row['price'], 2); ?></div>
 
-    
+        <!-- Add to Cart form -->
+        <br>
+
+        <!-- Quantity control form -->
+        <form action="cart.php" method="POST">
+            <button type="submit" name="action" value="increase" class="cart-button">+</button>
+            <button type="submit" name="action" value="decrease" class="cart-button">-</button>
+            <span>Quantity: <?php echo $row['count']; ?></span>
+            <span>Total: $<?php echo number_format($itemPrice, 2); ?></span>
+        </form>
+    </div>
+
+<?php endwhile; ?>
+
+<!-- After the loop, you can display the total price of all items -->
+
+
+
+    </section>
+    <center>
+
+    <form action="checkout.php" method="POST">
+    <div class="total-price">
+    <h3>Total Price: <?php echo number_format($totalPrice, 2); ?></h3>
+
+        <input type="hidden" id="totalPrice" name="totalPrice" value="<?php echo number_format($totalPrice, 2); ?>" readonly>
+    </div>
+        <button type="submit" class="cart-button" name="action" value="checkout">Proceed to Checkout</button>
+    </form>
+</center>
+
+
+</main>
+
+<footer class="footer">
+    <p>&copy; 2024 Honda Spare Parts Store</p>
+</footer>
 </body>
 </html>
 
 <?php
-// Check if user is logged in and has added items to the cart
+// Insert updated cart items into the database after adjusting quantities
 if (isset($_SESSION['email']) && isset($_SESSION['cart'])) {
     $userna = $_SESSION['email']; // Use email for user identification
 
@@ -328,9 +372,3 @@ if (isset($_SESSION['email']) && isset($_SESSION['cart'])) {
 // Close the database connection
 mysqli_close($con);
 ?>
-
-    <footer class="footer">
-        <p>&copy; 2024 Honda Spare Parts Store</p>
-    </footer>
-</body>
-</html>

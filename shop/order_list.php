@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -126,32 +128,48 @@
         <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
-    
+    <?php
+    $ac=$_SESSION["email"];
+
+        $con = mysqli_connect("localhost", "root", "", "sparehub");
+
+$query = "select * from cart where shop='$ac' and status='Placed';";
+$result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+
+        ?>
     <div class="container">
         <h1 class="s1">ORDER LIST</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Sl. No</th>
-                    <th>Order ID</th>
-                    <th>Name</th>
-                    <th>Number of Products</th>
-                    <th>Status</th>
+                    <th>Item</th>
+                    <th> Count</th>
+                    <th>Price</th>
+                    <th>Company</th>
+                    <th>Verify</th>
+
                 </tr>
             </thead>
-            <tbody>
+            <tbody><?php
+            while($row=mysqli_fetch_array($result))
+            { ?>
                 <tr>
-                    <td>1</td>
-                    <td>12313</td>
-                    <td>Antony</td>
-                    <td>3</td>
-                    <td>
-                        <button class="approve">APPROVE</button>
-                        <button class="pending">PENDING</button>
-                    </td>
+                    <?php
+                echo "<td>".$row['item']."</td>"."<td>".$row['count']."</td>"."<td>".$row['price']."</td>"."<td>".$row['company']."</td>"."<td>";
+?>
+                       <a href="accpetorder.php?id=<?php echo $row['id'];?>">
+<button class="button" style="background-color: #28a745;">Approve</button>
+</a>
+<a href="shopreject.php?id=<?php echo $row['id'];?>">
+<button class="button" style="background-color: #ac1515;">Reject</button>
+</a> </td>
                 </tr>
+                <?php
+}
+?>
             </tbody>
         </table>
     </div>
+ 
 </body>
 </html>

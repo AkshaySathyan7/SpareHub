@@ -6,34 +6,34 @@ if (isset($_POST['action']) && $_POST['action'] == 'add') {
     $partname = $_POST['partname'];
     $price = $_POST['price'];
     $shop = $_POST['shop'];
+    $p_comp = $_POST['p_comp'];
+    $user = $_SESSION['email'];
+    $user_id = 1; // Replace this with the actual logged-in user's ID, e.g., $_SESSION['user_id']
 
-    // Initialize cart in session if not already
-    if (!isset($_SESSION['cart'])) {
-        $_SESSION['cart'] = array();
+    // Connect to the database
+    $con = mysqli_connect("localhost", "root", "", "sparehub");
+    if (!$con) {
+        die("Connection failed: " . mysqli_connect_error());
     }
 
-    // Check if the item is already in the cart
-    $itemFound = false;
-    foreach ($_SESSION['cart'] as &$item) {
-        if ($item['partname'] == $partname) {
-            $item['quantity']++;  // Increase quantity if the item is already in the cart
-            $itemFound = true;
-            break;
-        }
+    // Insert into the cart table
+    $status = 'Pending'; // Set the status as 'pending'
+    $query = "INSERT INTO cart (item, count, price, company, shop, username, status) 
+              VALUES ('$partname',1, '$price','$p_comp', '$shop', '$user', '$status')";
+
+    if (mysqli_query($con, $query)) {
+        // Redirect to the same page after adding the item to prevent re-submission
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($con);
     }
 
-    // If the item is not found in the cart, add it
-    if (!$itemFound) {
-        $_SESSION['cart'][] = array(
-            'partname' => $partname,
-            'price' => $price,
-            'shop' => $shop,
-            'quantity' => 1 // Initialize quantity to 1
-        );
-    }
+    // Close database connection
+    mysqli_close($con);
 }
 
-// Connect to the database
+// Connect to the database for displaying spare parts
 $con = mysqli_connect("localhost", "root", "", "sparehub");
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
@@ -245,7 +245,7 @@ body {
     </style>
 </head>
 <body>
-<div class="sidebar">
+    <div class="sidebar">
         <h2>Spare Hub<i class="fa-regular fa-user"></i></i></h2>
         <a href="userdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
         <a href="edit-pass.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
@@ -290,9 +290,9 @@ body {
                     <!-- Add to Cart form -->
                     <form action="" method="POST">
                         <input type="hidden" name="partname" value="<?php echo $row['partname']; ?>">
+                        <input type="hidden" name="p_comp" value="<?php echo $row['p_comp']; ?>">
                         <input type="hidden" name="price" value="<?php echo $row['price']; ?>">
                         <input type="hidden" name="shop" value="<?php echo $row['sho']; ?>">
-                        <input type="hidden" name="comp" value="<?php echo $row['p_comp']; ?>">
 
                         <!-- Conditionally disable the "Add to Cart" button if the item is already in the cart -->
                         <button type="submit" class="cart-button" name="action" value="add" <?php echo $isInCart ? 'disabled' : ''; ?>>
@@ -300,9 +300,6 @@ body {
                         </button>
                     </form>
                     <br>
-
-                    <!-- Buy Now form -->
-                    <!-- Add your Buy Now button/form here if necessary -->
                 </div>
             <?php endwhile; ?>
         </section>
