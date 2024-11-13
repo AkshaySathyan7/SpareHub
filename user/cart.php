@@ -63,7 +63,7 @@ if (isset($_GET['search'])) {
     $searchQuery = mysqli_real_escape_string($con, $_GET['search']);
     $query = "SELECT * FROM spare_parts WHERE company='Honda' AND partname LIKE '%$searchQuery%'";
 } else {
-    $query = "SELECT * FROM cart WHERE username='$user'";
+    $query = "SELECT * FROM cart WHERE username='$user' and status='Pending'";
 }
 
 $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
@@ -270,7 +270,7 @@ body {
     <a href="complaint.php"><i class="fa-solid fa-comment"></i> Complaint</a>
     <a href="feedback.php"><i class="fa-solid fa-pen"></i> Feedback</a>
     <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
-    <a href="profile.php"><i class="fas fa-file-alt"></i> Orders</a>
+    <a href="orders.php"><i class="fas fa-file-alt"></i> Orders</a>
     <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>
 
