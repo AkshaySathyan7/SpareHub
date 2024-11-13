@@ -1,28 +1,37 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="shopstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        /* General Body Styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #6e88c0;
             margin: 0;
-            display: flex;
+            display: flex; /* Flex layout for sidebar + content */
         }
 
+        /* Sidebar Styling */
         .sidebar {
-            background-color: #2196f3;
+            background-color: #00796b; /* Teal */
             color: #fff;
             width: 250px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             transition: background-color 0.3s ease;
-            height: 100vh; /* Make sidebar full height */
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Keeps sidebar on top */
         }
 
         .sidebar a {
@@ -37,7 +46,7 @@
         }
 
         .sidebar a:hover {
-            color: #ff9800;
+            color: #ffcc80; /* Light orange */
         }
 
         .sidebar a::after {
@@ -47,7 +56,7 @@
             bottom: -5px;
             width: 100%;
             height: 2px;
-            background: #ff9800;
+            background: #ffcc80;
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -60,21 +69,24 @@
             margin-right: 10px;
         }
 
+        /* Main Content Area */
         .container {
-            flex: 1; /* Allow container to take remaining space */
-            max-width: 1000px;
-            margin: 20px;
-            background: #fff;
+            flex: 1; /* Allow container to fill remaining space */
+            margin-left: 279px; /* Adjust space for sidebar */
             padding: 20px;
+            background: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-height: 100vh; /* Ensure content fills at least the screen height */
         }
 
         h1 {
             text-align: center;
             color: #333;
+            font-size: 24px;
         }
 
+        /* Table Styling */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -88,7 +100,7 @@
         }
 
         th {
-            background-color: #5b4caf;
+            background-color: #00796b; ;
             color: white;
         }
 
@@ -105,47 +117,75 @@
             font-size: 14px;
         }
 
-        .approve {
-            background-color: #4CAF50;
-            color: white;
-        }
-
+        /* Custom Class for Heading */
         .s1 {
             color: orange;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+                padding: 10px;
+            }
+
+            .container {
+                margin-left: 220px; /* Adjust space for sidebar on small screens */
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 20px; /* Smaller heading on mobile */
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Spare Hub</h2>
-        <a href="shopdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
-        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
-        <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
-        <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
-        <a href="order_display.php" class="fade-in"><i class="fas fa-file-alt"></i> All Orders</a>
 
-        <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
-        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Delivery Agent</h2>
+        <a href="agentdash.php"><i class="fas fa-home"></i> Home</a>
+        <a href="profile.php"><i class="fas fa-list"></i> Profile</a>
+        <a href="deliverylist.php"><i class="fa-solid fa-truck"></i> Delivery List</a>
+        <a href="track.php"><i class="fas fa-map-marker-alt"></i> Track Details</a>
+        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
-    
+    <?php
+    $ac=$_SESSION["email"];
+
+        $con = mysqli_connect("localhost", "root", "", "sparehub");
+
+$query = "select * from cart where and status<>'Placed' and status<>'Deliverd' limit 1;";
+$result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+
+        ?>
+    <!-- Main Content Area -->
     <div class="container">
-        <h1 class="s1">FEEDBACK</h1>
+        <h1 class="s1">ORDER LIST</h1>
         <table>
             <thead>
                 <tr>
-                    <th>NAME</th>
-                    <th>E-mail</th>
-                    <th>Rating</th>
+                    <th>Order ID</th>
+                    <th>item-Name</th>
+                    <th>Company-Name</th>
+                    <th>Shop-Name</th>
+                    <th>Customer-Name</th>
                 </tr>
             </thead>
             <tbody>
+               
                 <tr>
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
+        
             </tbody>
         </table>
     </div>
+
 </body>
 </html>

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 
 <head>
@@ -132,6 +134,7 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            width:25%;
         }
 
         .btn:hover {
@@ -142,13 +145,23 @@
 
 <body>
     <div class="sidebar">
-        <h2>Spare Hub - Delivery Agent</h2>
-        <a href="dashboard.html" class="fade-in"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="deliveries.html" class="fade-in"><i class="fas fa-truck"></i> Deliveries</a>
-        <a href=" orders.html" class="fade-in"><i class="fas fa-file-alt"></i> Orders </a>
-        <a href="logout.html" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <h2> Delivery Agent</h2>
+        <a href="agentdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
+        <a href="deliverylist.php" class="fade-in"><i class="fa-solid fa-truck"></i>Delivery_list</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Track Details</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
+    <?php
+    $ac=$_SESSION["email"];
 
+        $con = mysqli_connect("localhost", "root", "", "sparehub");
+
+$query = "select * from cart where status<>'Placed' and status<>'Deliverd' limit 1;";
+$result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+$row=mysqli_fetch_array($result);
+
+        ?>
     <div class="main-content">
         <div class="header">
             <div class="logo">
@@ -158,16 +171,25 @@
         </div>
 
         <div class="card">
-            <h1>Delivery Agent Dashboard</h1>
-            <p>Manage your deliveries and track your shipments.</p>
-        </div>
+            <h1>Welcome to Spare Hub!
+            <?php
+//echo $_SESSION["username"];
+echo $_SESSION["email"];
+
+?>
+</div>
 
         <div class="delivery-info">
             <label for="order-id">Order ID:</label>
-            <input type="text" id="order-id" value="ORD12345" readonly>
+            <input type="text" id="order-id" value="<?php  echo  $row['id']; ?>" readonly>
+
+            <label for="order-id">Shop Address:</label>
+            <input type="text" id="order-id" value="<?php  echo  $row['shop']; ?>" readonly>
 
             <label for="customer-name">Customer Name:</label>
-            <input type="text" id="customer-name" value="John Doe" readonly>
+            <input type="text" id="customer-name" value="<?php  echo  $row['username']; ?>" readonly>
+            <label for="customer-name">Customer Address:</label>
+            <input type="text" id="customer-name">
 
             <label for="delivery-status">Delivery Status:</label>
             <select id="delivery-status">
@@ -177,7 +199,7 @@
                 <option value="delivered">Delivered</option>
             </select>
 
-            <button class="btn" id="update-status-btn">Update Delivery Status</button>
+            <center><button class="btn" id="update-status-btn">Update Delivery Status</button></center>
         </div>
     </div>
 

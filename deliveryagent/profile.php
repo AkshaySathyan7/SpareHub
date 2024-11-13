@@ -18,7 +18,7 @@ session_start();
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin-top:50px;
+            margin-top:70px;
         }
         
         * {
@@ -35,14 +35,13 @@ session_start();
         }
 
         .sidebar {
-            background-color: #3498db;
+            background-color: #00796b; /* Teal */
             color: #fff;
             width: 250px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             transition: background-color 0.3s ease;
-            padding-bottom:5px;
         }
 
         .sidebar a {
@@ -57,7 +56,7 @@ session_start();
         }
 
         .sidebar a:hover {
-            color: #f1c40f;
+            color: #ffcc80; /* Light orange */
         }
 
         .sidebar a::after {
@@ -67,7 +66,7 @@ session_start();
             bottom: -5px;
             width: 100%;
             height: 2px;
-            background: #f1c40f;
+            background: #ffcc80;
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -79,7 +78,7 @@ session_start();
         .sidebar i {
             margin-right: 10px;
         }
-        
+
         h1 {
             text-align: center;
             color: #00838f;
@@ -150,26 +149,39 @@ session_start();
         .save-btn:hover {
             background-color: #ff8c00;
         }
+        .save-btn-1 {
+  text-decoration: none; 
+  display: inline-block; 
+  padding: 10px 20px; 
+  background-color: #4CAF50; 
+  color: white; 
+  border-radius: 5px; 
+  text-align: center; 
+}
+
+.save-btn-1:hover {
+  background-color: #45a049; /* Darker shade on hover */
+}
+
        
     </style>
 
     <body>
-        <div class="sidebar">
-            <h2>Spare Hub</h2>
-            <a href="shopdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
-            <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
-            <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i>Add-product</a>
-            <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
-            <a href="order_display.php" class="fade-in"><i class="fas fa-file-alt"></i> All Orders</a>
-
-            <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
-            <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </div>
+    <div class="sidebar">
+       
+        <br>
+        <h2> Delivery Agent</h2>
+        <a href="agentdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
+        <a href="deliverylist.php" class="fade-in"><i class="fa-solid fa-truck"></i>Delivery_list</a>
+        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Track Details</a>
+        <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
     </div>
 
     
     <div class="edit-profile-dashboard">
-        <h1>Edit Profile<?php
+        <h1>Edit Profile<br><?php
        // echo $_SESSION["email"];
         ?></h1>
         <div class="profile-card">
@@ -186,14 +198,14 @@ $ac=$_SESSION["email"];
         <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-$query = "select * from reg_user where username='$ac';";
+$query = "select * from reg_user where username='$ac'";
 $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
-$row=mysqli_fetch_array($result)
+$row=mysqli_fetch_array($result);
 
         ?>
-        <br>
         
-        <form action="updatedetails.php" method="POST" class="profile-form">
+        
+         <form action="updatedetails.php" method="POST" class="profile-form">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="<?php echo  $row['name']; ?>" required>
@@ -211,8 +223,10 @@ $row=mysqli_fetch_array($result)
                 <label for="address">Address</label>
                 <textarea id="address" name="address" required><?php echo  $row['address']; ?></textarea>
             </div>
-    
-            <center><button type="submit" name="upd" class="save-btn">Save Changes</button></center>
+          <center>  <button type="submit" name="upd" class="save-btn">Save Changes</button></center>
+          <br>
+          <center><a href="licence.php" class="save-btn-1">Update License</a></center>
+
         </form>
     </div>
 </body>

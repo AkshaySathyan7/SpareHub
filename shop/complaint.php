@@ -155,6 +155,8 @@
         <a href="profile.php" class="fade-in"><i class="fas fa-list"></i> Profile</a>
         <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i> Add-product</a>
         <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
+        <a href="order_display.php" class="fade-in"><i class="fas fa-file-alt"></i> All Orders</a>
+
         <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
