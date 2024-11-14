@@ -149,7 +149,6 @@ session_start();
         <a href="agentdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
         <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
         <a href="deliverylist.php" class="fade-in"><i class="fa-solid fa-truck"></i>Delivery_list</a>
-        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Track Details</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     <?php
@@ -157,9 +156,32 @@ session_start();
 
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-$query = "select * from cart where status<>'Placed' and status<>'Deliverd' limit 1;";
+$query = "select * from cart where status<>'Placed' and status<>'Delivered' limit 1;";
 $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
-$row=mysqli_fetch_array($result);
+//$row=mysqli_fetch_array($result);
+if ($result && mysqli_num_rows($result) > 0) {
+    // Fetch the row (safe to access since a row exists)
+    $row = mysqli_fetch_assoc($result);
+    
+    // Example: Access column values safely
+    // $row['column_name']
+} else {
+
+    echo "No New Orders.";
+    exit;
+}
+
+$acc= $row['username'];
+$query1 = "select * from reg_user where username='$acc'";
+//echo $query1;
+$result1 = mysqli_query($con, $query1) or die("Couldn't connect to server: " . mysqli_error($con));
+$row1 =mysqli_fetch_array($result1);
+
+$sho= $row['shop'];
+$query2 = "select * from user_shop where username='$sho'";
+//echo $query2;
+$result2 = mysqli_query($con, $query2) or die("Couldn't connect to server: " . mysqli_error($con));
+$row2 =mysqli_fetch_array($result2);
 
         ?>
     <div class="main-content">
@@ -178,29 +200,32 @@ echo $_SESSION["email"];
 
 ?>
 </div>
+<form method="POST" action="status.php">
+    <div class="delivery-info">
+        <label for="order-id">Order ID:</label>
+        <input type="text" id="order-id" name="order_id" value="<?php echo $row['id']; ?>" readonly>
 
-        <div class="delivery-info">
-            <label for="order-id">Order ID:</label>
-            <input type="text" id="order-id" value="<?php  echo  $row['id']; ?>" readonly>
+        <label for="shop-name">Shop Name and Address:</label>
+        <input type="text" id="shop-name" name="shop_name" value="<?php echo $row['shop'] . ', ' . $row2['shop_id']; ?>" readonly>
 
-            <label for="order-id">Shop Address:</label>
-            <input type="text" id="order-id" value="<?php  echo  $row['shop']; ?>" readonly>
+        <label for="customer-name">Customer Name:</label>
+        <input type="text" id="customer-name" name="customer_name" value="<?php echo $row1['name']; ?>" readonly>
 
-            <label for="customer-name">Customer Name:</label>
-            <input type="text" id="customer-name" value="<?php  echo  $row['username']; ?>" readonly>
-            <label for="customer-name">Customer Address:</label>
-            <input type="text" id="customer-name">
+        <label for="customer-address">Customer Address:</label>
+        <input type="text" id="customer-address" name="customer_address" value="<?php echo $row1['address']; ?>" readonly>
 
-            <label for="delivery-status">Delivery Status:</label>
-            <select id="delivery-status">
-                <option value="on-the-way-to-pickup">On the way to pickup</option>
-                <option value="picked-up">Picked up</option>
-                <option value="on-the-way-to-deliver">On the way to deliver</option>
-                <option value="delivered">Delivered</option>
-            </select>
+        <label for="delivery-status">Delivery Status:</label>
+        <select id="delivery-status" name="delivery_status">
+            <option value="On-The-Way-To-Pickup">On the way to pickup</option>
+            <option value="Picked-Up">Picked up</option>
+            <option value="En-Route">On the way to deliver</option>
+            <option value="Delivered">Delivered</option>
+        </select>
 
-            <center><button class="btn" id="update-status-btn">Update Delivery Status</button></center>
-        </div>
+        <center><button class="btn" id="update-status-btn" type="submit">Update Delivery Status</button></center>
+    </div>
+</form>
+
     </div>
 
     <script>

@@ -177,7 +177,8 @@ session_start();
       //  echo $_SESSION["email"];
         ?>
         
- <p>       <?php
+ <p>      
+     <?php
 //echo $_SESSION["username"];
 //$ab=$_SESSION["username"];
 $ac=$_SESSION["email"];

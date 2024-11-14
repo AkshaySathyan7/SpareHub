@@ -196,6 +196,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin: 20px;
+    padding-left:200px;
+    padding-top:70px;
 }
 
 .product-card {
@@ -207,6 +209,8 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.2s;
+    display: inline;
+    margin-bottom:1px;
 }
 
 .product-card:hover {

@@ -174,7 +174,6 @@ session_start();
         <a href="agentdash.php" class="fade-in"><i class="fas fa-home"></i> Home</a>
         <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Profile</a>
         <a href="deliverylist.php" class="fade-in"><i class="fa-solid fa-truck"></i>Delivery_list</a>
-        <a href="profile.php" class="fade-in"><i class="fas fa-list"></i>Track Details</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     </div>

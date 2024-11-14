@@ -148,7 +148,7 @@ session_start();
         <a href="agentdash.php"><i class="fas fa-home"></i> Home</a>
         <a href="profile.php"><i class="fas fa-list"></i> Profile</a>
         <a href="deliverylist.php"><i class="fa-solid fa-truck"></i> Delivery List</a>
-        <a href="track.php"><i class="fas fa-map-marker-alt"></i> Track Details</a>
+        
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     <?php
@@ -156,7 +156,7 @@ session_start();
 
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-$query = "select * from cart where and status<>'Placed' and status<>'Deliverd' limit 1;";
+$query = "select * from cart where status<>'Placed' and agent='$ac'";
 $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
 
         ?>
@@ -167,22 +167,20 @@ $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mys
             <thead>
                 <tr>
                     <th>Order ID</th>
-                    <th>item-Name</th>
-                    <th>Company-Name</th>
+                    <th>Item-Name</th>
                     <th>Shop-Name</th>
-                    <th>Customer-Name</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-               
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-        
+           <?php    
+            while($row=mysqli_fetch_array($result))
+{
+echo"<tr>";
+echo"<td>".$row['id']."</td>"."<td>".$row['item']."</td>"."<td>".$row['shop']."</td>"."<td>".$row['status']."</td>.</tr>";
+
+}
+     ?>   
             </tbody>
         </table>
     </div>

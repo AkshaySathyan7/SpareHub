@@ -198,26 +198,26 @@ $ac=$_SESSION["email"];
         <?php
         $con = mysqli_connect("localhost", "root", "", "sparehub");
 
-$query = "select * from reg_user where username='$ac'";
+$query = "select * from user_agent where username='$ac'";
 $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
 $row=mysqli_fetch_array($result)
 
         ?>
         
         
-         <form action="licence.php" method="POST" class="profile-form">
+         <form action="updatelicence.php" method="POST">
             <div class="form-group">
                 <label for="name">Driving License Number</label>
-                <input type="text" name="name" id="name" value="<?php echo  $row['name']; ?>" required>
+                <input type="text" name="name" id="name" value="<?php echo  $row['dl_license']; ?>" required>
 
             </div>
             <div class="form-group">
                 <label for="vehcile-num">Vehicle Number</label>
-                <input type="email" name="email" id="email" value="<?php echo  $row['email']; ?>" required>
+                <input type="text" name="email" id="email" value="<?php echo  $row['veh_num']; ?>" required>
             </div>
-          <center>
-                <a href="licence.php" class="save-btn-1">Update License</a>
-</center>
+          
+          <center>  <button type="submit" name="upd" class="save-btn">Save Changes</button></center>
+
 
         </form>
     </div>

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -167,12 +169,30 @@
             <h1>User Complaint</h1>
             <p>Please fill out the form below to submit your complaint.</p>
         </header>
+        <?php
+                
+                $ac=$_SESSION["email"];
+$con = mysqli_connect("localhost", "root", "", "sparehub");
+$query="select * from cart where username='$ac'";
+$result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+                
+                ?>
         <main>
             <form id="complaint-form">
                 <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" placeholder="Please enter your name" name="name" required>
-                </div>
+                <select id="vehicleCompany" name="vehicleCompany" required onchange="updateVehicleTypes()">
+                    
+                <option value="" disabled selected>Select Order</option>
+
+                    <?php
+
+                while ($row = mysqli_fetch_array($result)) {
+?>
+                        <option value="<?php echo $row['item'];?>"><?php echo $row['item']; ?></option><?php
+                }
+                 ?>       
+                    </select>
+            </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" placeholder="Please enter your valid email" name="email" required>

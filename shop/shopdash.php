@@ -214,22 +214,22 @@ session_start();
             <div class="dashboard-card">
                 <h2>Orders</h2>
                 <p>View and manage your orders.</p>
-                <a href="order_list.html"> <button class="btn">Track Shipments</button></a>
+                <a href="order_list.php"> <button class="btn">Track Shipments</button></a>
             </div>
             <div class="dashboard-card">
                 <h2>Shipments</h2>
                 <p>No of items shiped.</p>
-                <a href="ship.html"><button class="btn">Track Shipments</button></a>
+                <a href="ship.php"><button class="btn">Track Shipments</button></a>
             </div>
             <div class="dashboard-card">
                 <h2>Complaints Received</h2>
                 <p>Number of complaints received</p>
-               <a href="complaint_list.html"> <button class="btn">View Complaint</button></a>
+               <a href="complaint_list.php"> <button class="btn">View Complaint</button></a>
             </div>
             <div class="dashboard-card">
                 <h2>Solutions</h2>
                 <p>Number of Solutions Provided</p>
-                <a href="solution.html"><button class="btn">View Solution</button></a>  
+                <a href="solution.php"><button class="btn">View Solution</button></a>  
             </div>
             
             <div class="dashboard-card">

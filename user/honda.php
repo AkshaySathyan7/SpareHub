@@ -18,8 +18,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'add') {
 
     // Insert into the cart table
     $status = 'Pending'; // Set the status as 'pending'
-    $query = "INSERT INTO cart (item, count, price, company, shop, username, status) 
-              VALUES ('$partname',1, '$price','$p_comp', '$shop', '$user', '$status')";
+
+    $query = "INSERT INTO cart (item, count, price, company, shop, username, status,agent) 
+              VALUES ('$partname',1, '$price','$p_comp', '$shop', '$user', '$status','Nil')";
 
     if (mysqli_query($con, $query)) {
         // Redirect to the same page after adding the item to prevent re-submission

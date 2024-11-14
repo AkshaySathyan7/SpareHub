@@ -175,6 +175,9 @@ session_start();
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
 
+            <label for="email">Username</label>
+            <input type="text" id="email" name="username" required>
+
             <label for="email">Phone Number</label>
             <input type="number" id="phno" name="phno" required>
 

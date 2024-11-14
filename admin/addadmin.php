@@ -1,10 +1,13 @@
 <?php
 $name=$_POST["name"];
 $email=$_POST["email"];
+$phno=$_POST["phno"];
+$username=$_POST["username"];
+
 $user_type="admin";
 $status="ok";
 $con = mysqli_connect("localhost", "root", "", "sparehub");
-$query="insert into reg_user (name,email,user_type,status) values ('$name','$email','$user_type','$status')";
+$query="insert into reg_user (name,username,email,phno,user_type,status) values ('$name','$username','$email','$phno','$user_type','$status')";
 if(mysqli_query($con,$query))
 {
     echo "<script>
