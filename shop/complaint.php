@@ -160,6 +160,13 @@
         <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
+    <?php
+    $ac=$_SESSION["email"];
+
+        $con = mysqli_connect("localhost", "root", "", "sparehub");
+        $query = "select * from complaint where shop='$ac' and status='Placed';";
+        $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+?>
     
     <div class="container">
         <div class="complaint-dashboard">

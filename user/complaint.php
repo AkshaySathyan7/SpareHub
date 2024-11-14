@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -153,6 +154,7 @@ session_start();
         transform: translateY(0);
     }
 </style>
+
 <body>
     <div class="sidebar">
         <h2>Spare Hub <i class="fa-regular fa-user"></i></h2>
@@ -164,50 +166,70 @@ session_start();
         <a href="profile.php"><i class="fas fa-file-alt"></i> Orders</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
+
     <div class="container">
         <header>
             <h1>User Complaint</h1>
             <p>Please fill out the form below to submit your complaint.</p>
         </header>
-        <?php
-                
-                $ac=$_SESSION["email"];
-$con = mysqli_connect("localhost", "root", "", "sparehub");
-$query="select * from cart where username='$ac'";
-$result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
-                
-                ?>
+
         <main>
-            <form id="complaint-form">
-                <div class="form-group">
-                <select id="vehicleCompany" name="vehicleCompany" required onchange="updateVehicleTypes()">
-                    
-                <option value="" disabled selected>Select Order</option>
-
+        <form id="complaint-form" method="POST" action="complaint_product.php">
+            <div class="form-group">
+                <select id="vehicleCompany" name="vehicleCompany" required onchange="updateVehicleDetails()">
+                    <option value="" disabled selected>Select Order</option>
                     <?php
+                    $ac = $_SESSION["email"];
+                    $con = mysqli_connect("localhost", "root", "", "sparehub");
+                    $query = "SELECT * FROM cart WHERE username='$ac'";
+                    $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
 
-                while ($row = mysqli_fetch_array($result)) {
-?>
-                        <option value="<?php echo $row['item'];?>"><?php echo $row['item']; ?></option><?php
-                }
-                 ?>       
-                    </select>
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<option value='{$row['item']}' data-item-id='{$row['id']}'>{$row['item']}</option>";
+                    }
+                    ?>
+
+                </select>
             </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Please enter your valid email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Product Name:</label>
-                    <input type="text" id="subject" placeholder="Enter product name" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Complaint Message:</label>
-                    <textarea id="message" name="message" placeholder="Enter your complaints here" rows="4" required></textarea>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+
+            <!-- Hidden fields to hold the non-editable details -->
+            <input type="hidden" id="itemPrice" name="itemprice">
+            <input type="hidden" id="itemQuantity" name="itemquantity">
+            <input type="hidden" id="itemDescription" name="itemdescription">
+
+            <!-- Non-editable details displayed below -->
+            <div id="item-details">
+                <!-- Item details will be shown here -->
+            </div>
+
+        </form>
         </main>
+
     </div>
+
+    <script>
+    function updateVehicleDetails() {
+        var itemName = document.getElementById("vehicleCompany").value;
+
+        // Send AJAX request to fetch the item details based on the selected item
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "get_item_details.php?item=" + encodeURIComponent(itemName), true);
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // Update the item details section with the response
+                document.getElementById("item-details").innerHTML = xhr.responseText;
+
+                // Also, set the hidden fields to pass data along with the form
+                var itemDetails = JSON.parse(xhr.responseText); // Assuming the response is in JSON format
+                document.getElementById("itemPrice").value = itemDetails.price;
+                document.getElementById("itemQuantity").value = itemDetails.quantity;
+                document.getElementById("itemDescription").value = itemDetails.description;
+
+            }
+        };
+        xhr.send();
+    }
+    </script>
+
 </body>
 </html>

@@ -279,7 +279,7 @@ body {
 </div>
 
 <header class="header">
-    <img src="/assets/honda.png" alt="Honda Logo">
+    <img src="./assets/honda.png" alt="Honda Logo">
     <h1>Honda Spare Parts Store</h1>
     <div class="search-bar">
         <form action="" method="GET">

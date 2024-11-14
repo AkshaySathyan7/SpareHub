@@ -133,10 +133,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Sl. No</th>
-                    <th>Customer Name</th>
+                    <th>Order Id</th>
                     <th>Product Name</th>
-                    <th>Complaint ID</th>
+                    <th>Complaint</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -145,10 +144,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <td>
-                        <button class="approve">APPROVE</button>
-                        <button class="pending">REJECT</button>
+                       
                     </td>
                 </tr>
                 <!-- Additional rows can be added here -->

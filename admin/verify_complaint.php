@@ -206,18 +206,15 @@ session_start();
             <table>
                 <thead>
                     <tr>
-                        <th>Complaint ID</th>
-                        <th>User</th>
+                        <th>Product Name</th>
+                        <th>Customer username</th>
                         <th>Description</th>
-                        <th>Date Submitted</th>
-                        <th>Status</th>
+
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td class="status pending"></td>
