@@ -1,33 +1,30 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopper Complaint Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="shopstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #5882ac, #d9e6f2);
-            display: flex;
+            font-family: Arial, sans-serif;
+            background-color: #6e88c0;
+            margin: 0;
+            display: flex; /* Use flexbox layout */
         }
-        
+
         .sidebar {
             background-color: #2196f3;
             color: #fff;
-            width: 250px; /* Fixed width for sidebar */
+            width: 250px;
             padding: 20px;
-            height: 100vh; /* Full height */
             display: flex;
             flex-direction: column;
+            height: 100vh; /* Full height */
         }
 
         .sidebar h2 {
@@ -54,93 +51,66 @@
         }
 
         .container {
-            flex: 1; /* Allow the container to fill remaining space */
+            flex: 1; /* Allow container to fill remaining space */
+            max-width: 1000px;
+            margin: 20px; /* Space around the container */
+            background: #fff;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .complaint-dashboard {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .complaint-dashboard:hover {
-            transform: scale(1.02);
-        }
-        
-        h2 {
+
+        h1 {
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            color:white;
-            font-weight: bold;
+            color: #333;
         }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
-        
-        .form-group input,
-        .form-group textarea {
+
+        table {
             width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
             padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-        
-        .form-actions {
-            display: flex;
-            justify-content: center; /* Center the button */
-        }
-        
-        .form-actions button {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
+
+        th {
+            background-color: #5b4caf;
             color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        button {
+            padding: 6px 12px;
+            margin-right: 5px;
             border: none;
-            border-radius: 8px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            font-size: 14px;
         }
-        
-        .form-actions button[type="submit"] {
-            background-color: #0f51cb; 
+
+        .approve {
+            background-color: #4CAF50;
+            color: white;
         }
-        
-        .form-actions button[type="submit"]:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
+
+        .pending {
+            background-color: #f44336;
+            color: white;
         }
-        
-        .form-actions button[type="reset"] {
-            background-color: #6c757d; 
+
+        .approve:hover {
+            background-color: #45a049;
         }
-        
-        .form-actions button[type="reset"]:hover {
-            background-color: #5a6268;
-            transform: translateY(-2px);
+
+        .pending:hover {
+            background-color: #e53935;
         }
 
         .s1 {
@@ -156,7 +126,6 @@
         <a href="add.php" class="fade-in"><i class="fas fa-shopping-cart"></i> Add-product</a>
         <a href="order_list.php" class="fade-in"><i class="fas fa-file-alt"></i> Orders</a>
         <a href="order_display.php" class="fade-in"><i class="fas fa-file-alt"></i> All Orders</a>
-
         <a href="complaint.php" class="fade-in"><i class="fa-solid fa-trash"></i> Complaints</a>
         <a href="logout.php" class="fade-in"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
@@ -164,29 +133,52 @@
     $ac=$_SESSION["email"];
 
         $con = mysqli_connect("localhost", "root", "", "sparehub");
-        $query = "select * from complaint where shop='$ac' and status='Placed';";
-        $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
-?>
-    
+
+$query = "select * from orders where shop='$ac' and status='Pending';";
+$result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+
+        ?>
     <div class="container">
-        <div class="complaint-dashboard">
-            <h2 class="s1">SHOPPER SOLUTION AREA</h2>
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <input type="text" id="shopper-name" name="shopper-name" required placeholder="Enter your name">
-                </div>
-                <div class="form-group">
-                    <input type="email" id="shopper-email" name="shopper-email" required placeholder="Enter Customer email">
-                </div>
-                <div class="form-group">
-                    <label for="solution">Proposed Solution</label>
-                    <textarea id="solution" name="solution" rows="4" placeholder="Write your proposed solution..."></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+        <h1 class="s1">ORDER LIST</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th> Item</th>
+                    <th>Complaint</th>
+                    <th>Solution</th>
+                    <th>Submit</th>
+
+                </tr>
+            </thead>
+            
+            <tbody><?php
+            while($row=mysqli_fetch_array($result))
+            { ?>
+                <tr>
+                    <?php
+                echo "<td>".$row['pro_id']."</td>"."<td>".$row['item']."</td>"."<td>";
+?>
+       <textarea readonly rows="4" cols="50"><?php echo $row['complaint'] ?>
+       </textarea>
+       </td>
+       <td>
+       <textarea name="solution" rows="4" cols="50">
+       </textarea>
+       </td>
+       <td>
+       <a href="comp_solution.php?id=<?php echo $row['id']; ?>&complaint=<?php echo urlencode($row['complaint']); ?>">
+       <button class="button" style="background-color: #ac1515;">Update</button>
+</a>
+
+            </td>
+                </tr>
+                <?php
+}
+?>
+            </tbody>
+        </table>
     </div>
+ 
 </body>
 </html>

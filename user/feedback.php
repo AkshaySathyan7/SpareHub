@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+session_start();
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +16,7 @@
         margin: 0;
         padding: 0;
     }
-    
+
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: #333;
@@ -21,12 +24,7 @@
         display: flex;
         min-height: 100vh;
     }
-    
-    .container {
-        display: flex;
-        flex: 1;
-    }
-    
+
     .sidebar {
         background-color: #3498db;
         color: #fff;
@@ -36,7 +34,12 @@
         flex-direction: column;
         transition: background-color 0.3s ease;
     }
-    
+
+    .sidebar h2 {
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
+
     .sidebar a {
         color: #fff;
         text-decoration: none;
@@ -44,14 +47,12 @@
         font-size: 18px;
         position: relative;
         transition: color 0.3s ease;
-        display: flex;
-        align-items: center;
     }
-    
+
     .sidebar a:hover {
         color: #f1c40f;
     }
-    
+
     .sidebar a::after {
         content: '';
         position: absolute;
@@ -63,145 +64,172 @@
         transform: scaleX(0);
         transition: transform 0.3s ease;
     }
-    
+
     .sidebar a:hover::after {
         transform: scaleX(1);
     }
-    
-    .sidebar i {
-        margin-right: 10px;
-    }
-    
-    .rating-container {
-        background:white;
+
+    .container {
+        flex-grow: 1;
+        max-width: 600px;
+        margin: 50px auto;
         padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        max-width: 500px;
-        margin: 50px auto; /* Center the rating container */
-        color: white;
-        height:500px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
     }
-    
-    h1 {
+
+    .container:hover {
+        transform: scale(1.02);
+    }
+
+    header {
         text-align: center;
-        margin-bottom: 20px;
-        color:orange;
+        margin-bottom: 30px;
     }
-    
+
+    h1 {
+        font-size: 28px;
+        color: #5f665f;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
     label {
-        display: block;
         margin-bottom: 5px;
         font-weight: bold;
     }
-    
-    input[type="text"], input[type="email"], textarea {
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
         width: 100%;
         padding: 12px;
-        margin-bottom: 15px;
-        border: none;
-        border-radius: 5px;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s;
     }
-    
-    input:focus, textarea:focus {
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+        border-color: #4CAF50;
         outline: none;
-        box-shadow: 0 0 5px rgba(110, 125, 255, 0.5);
     }
-    
-    .stars {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
-    }
-    
-    .stars input {
-        display: none;
-    }
-    
-    .stars label {
-        font-size: 30px;
-        color: #ccc;
-        cursor: pointer;
-        transition: color 0.2s;
-    }
-    
-    .stars input:checked ~ label {
-        color: gold;
-    }
-    
-    .stars label:hover,
-    .stars label:hover ~ label {
-        color: gold;
-    }
-    
+
     button {
-        width: 30%;
         padding: 12px;
-        background-color: #2865a7;
+        background-color: blue;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 6px;
+        font-size: 18px;
         cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s, transform 0.2s;
+        width: 30%;
+        align-self: center;
     }
-    .h1
-    {
-        color:orange;
-    }
-    
+
     button:hover {
-        background-color: #218838;
+        background-color: darkblue;
+        transform: translateY(-2px);
     }
-    
-    button:focus {
-        outline: none;
-        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+
+    button:active {
+        transform: translateY(0);
     }
-    
 </style>
+
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <h2>Spare Hub <i class="fa-regular fa-user"></i></h2>
-            <br>
-            <a href="userdash.php"><i class="fas fa-home"></i> Home</a>
-            <a href="edit-pass.php"><i class="fas fa-list"></i> Profile</a>
-            <a href="complaint.php"><i class="fa-solid fa-comment"></i> Complaint</a>
-            <a href="categories.html"><i class="fa-solid fa-pen"></i> Feedback</a>
-            <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
-            <a href="profile.php"><i class="fas fa-file-alt"></i> Orders</a>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </div>
-        <div class="rating-container">
-            <h1>We Value Your Review</h1>
-            <form>
-                <label for="name">Your Name</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-
-                <label for="email">Your Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-
-                <label for="email">Product name</label>
-                <input type="email" id="email" placeholder="Enter your product name" required>
-
-                <label for="rating">Rate Us</label>
-                <div class="stars">
-                    <input type="radio" name="rating" id="star1" value="5" required>
-                    <label for="star1">★</label>
-                    <input type="radio" name="rating" id="star2" value="4">
-                    <label for="star2">★</label>
-                    <input type="radio" name="rating" id="star3" value="3">
-                    <label for="star3">★</label>
-                    <input type="radio" name="rating" id="star4" value="2">
-                    <label for="star4">★</label>
-                    <input type="radio" name="rating" id="star5" value="1">
-                    <label for="star5">★</label>
-            </div>  
-               <center> <button type="submit">Submit</button></center>
-            </form>
-        </div>
+    <div class="sidebar">
+        <h2>Spare Hub <i class="fa-regular fa-user"></i></h2>
+        <a href="userdash.php"><i class="fas fa-home"></i> Home</a>
+        <a href="edit-pass.php"><i class="fas fa-list"></i> Profile</a>
+        <a href="complaint.php"><i class="fa-solid fa-comment"></i> Complaint</a>
+        <a href="feedback.php"><i class="fa-solid fa-pen"></i> Feedback</a>
+        <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a href="profile.php"><i class="fas fa-file-alt"></i> Orders</a>
+        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
+
+    <div class="container">
+        <header>
+            <h1>Rating </h1>
+            <p>Rate The Product</p>
+        </header>
+
+        <main>
+        <form id="complaint-form" method="POST" action="rating.php">
+            <div class="form-group">
+                <select id="vehicleCompany" name="vehicleCompany" required onchange="updateVehicleDetails()">
+                    <option value="" disabled selected>Select Order</option>
+                    <?php
+                    $ac = $_SESSION["email"];
+                    $con = mysqli_connect("localhost", "root", "", "sparehub");
+                    $query = "SELECT * FROM cart WHERE username='$ac'";
+                    $result = mysqli_query($con, $query) or die("Couldn't connect to server: " . mysqli_error($con));
+
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<option value='{$row['item']}' data-item-id='{$row['id']}'>{$row['item']}</option>";
+                    }
+                    ?>
+
+                </select>
+            </div>
+
+            <!-- Hidden fields to hold the non-editable details -->
+            <input type="hidden" id="itemPrice" name="itemprice">
+            <input type="hidden" id="itemQuantity" name="itemquantity">
+            <input type="hidden" id="itemDescription" name="itemdescription">
+
+            <!-- Non-editable details displayed below -->
+            <div id="item-details">
+                <!-- Item details will be shown here -->
+            </div>
+
+        </form>
+        </main>
+
+    </div>
+
+    <script>
+    function updateVehicleDetails() {
+        var itemName = document.getElementById("vehicleCompany").value;
+
+        // Send AJAX request to fetch the item details based on the selected item
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "ratingstar.php?item=" + encodeURIComponent(itemName), true);
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // Update the item details section with the response
+                document.getElementById("item-details").innerHTML = xhr.responseText;
+
+                // Also, set the hidden fields to pass data along with the form
+                var itemDetails = JSON.parse(xhr.responseText); // Assuming the response is in JSON format
+                document.getElementById("itemPrice").value = itemDetails.price;
+                document.getElementById("itemQuantity").value = itemDetails.quantity;
+                document.getElementById("itemDescription").value = itemDetails.description;
+
+            }
+        };
+        xhr.send();
+    }
+    </script>
+
 </body>
 </html>
